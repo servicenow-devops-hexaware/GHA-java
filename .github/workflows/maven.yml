@@ -57,7 +57,7 @@ jobs:
         path: staging
     - name: Docker build
       run: |
-            #docker build . -t hegdeshashi/agility:${{ steps.bump.outputs.jar_version }} -f Dockerfile
+            #docker build . -t hegdeshashi/agility:latest -f Dockerfile
             #docker run nginx:alpine
             docker build -t hegdeshashi/agility:${{ steps.bump.outputs.jar_version }} -f Dockerfile .
 
