@@ -58,5 +58,7 @@ jobs:
     - name: Docker build
       run: |
             #docker build . -t hegdeshashi/agility:${{ steps.bump.outputs.jar_version }} -f Dockerfile
-            docker run nginx:alpine
+            #docker run nginx:alpine
+            docker build -t hegdeshashi/agility:${{ steps.bump.outputs.jar_version }} -f Dockerfile .
+
   
