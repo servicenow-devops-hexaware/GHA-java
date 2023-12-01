@@ -11,7 +11,7 @@ name: Java CI with Maven
 on: 
   workflow_dispatch:
     inputs:
-      Build-docker-image:
+      Artifact:
         description: 'Which environment ?'
         required: true
         type: choice
@@ -66,7 +66,7 @@ jobs:
         name: Package
         path: staging
   
-  Build-docker-image:
+  Artifact:
     name: Push to Docker Hub
     runs-on: ubuntu-latest
     permissions:
@@ -76,7 +76,7 @@ jobs:
     steps:
     - name: Docker build
       run: |
-            docker build -t hexadevops/agility:${{ github.event.inputs.Build-docker-image }} -f Dockerfile .
+            docker build -t hexadevops/agility:${{ github.event.inputs.Artifact }} -f Dockerfile .
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
@@ -84,4 +84,4 @@ jobs:
             password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Docker push
       run: |
-            docker push hexadevops/agility:${{ github.event.inputs.Build-docker-image }}
+            docker push hexadevops/agility:${{ github.event.inputs.Artifact }}
