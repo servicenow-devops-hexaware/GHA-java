@@ -75,4 +75,4 @@ jobs:
             password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Docker push
       run: |
-            docker push hexadevops/agility:latest
+            docker push hexadevops/agility:${{ github.event.inputs.Artifact }}
